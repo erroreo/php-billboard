@@ -40,3 +40,13 @@ Api呼叫方式:POST
 | date | date | 日期 | Required |
 | title | string | 標題 | Required |
 | content | string | 內容 | Required |
+
+刪除資料
+
+Api Url:/delete.php
+
+Api呼叫方式:DELETE
+
+| Body參數 | 格式 | 說明 | 必填 |
+|-------|:-----:|------:|------:|
+| id | int | id | Required |
