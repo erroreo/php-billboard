@@ -35,8 +35,8 @@ Api Url:/create.php
 
 Api呼叫方式:POST
 
-| Body參數 | 格式 | 說明 |
-|-------|:-----:|------:|
-| date   |  date  |   日期 |
-| title   |  string  |   標題 |
-| content   |  string  |   內容 |
+| Body參數 | 格式 | 說明 | 必填 |
+|-------|:-----:|------:|------:|
+| date | date | 日期 | Required |
+| title | string | 標題 | Required |
+| content | string | 內容 | Required |
