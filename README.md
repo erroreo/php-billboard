@@ -18,6 +18,8 @@
 取得資料
 Api Url:/read.php
 Api呼叫方式:GET
+![image](![2](https://user-images.githubusercontent.com/102342658/177029505-b2b84264-886a-4dff-8c6d-32192958f567.jpg)
+)
 | 表頭1 | 表頭2 | 表頭3 |
 |-------|:-----:|------:|
 | 左1   |  中1  |   右1 |
