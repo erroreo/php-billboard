@@ -1,7 +1,7 @@
 <?php
     include_once("server.php");
     $data = json_decode(file_get_contents("php://input"));
-    echo $data;
+    
     $link = create_connection();
     $sql = "SELECT * FROM board";
     $result = execute_sql($link,"billboard",$sql);
