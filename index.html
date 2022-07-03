@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="test">
+        <input type="button" name="btncreate" value="新增">
+        <input type="button" name="btnupdate" value="修改">
+        <input type="button" name="btndelete" value="刪除">
+    </div>
+    <div id="create" style="display: none;">
+        <input type="date" name="date">
+        <input type="text" placeholder="title" name="title">
+        <textarea name="content" cols="30" rows="10"></textarea>
+        <a href="javascript:;">Create</a>
+    </div>
+
+    <div id="delete" style="display: none;">
+        <input type="text" placeholder="id">
+        <a href="javascript:;">Delete</a>
+    </div>
+
+    <div id="update" style="display: none;">
+        <input type="text" placeholder="id" name="id">
+        <input type="text" placeholder="title" name="title">
+        <textarea name="content" cols="30" rows="10"></textarea>
+        <a href="javascript:;">Update</a>
+    </div>
+
+    <!-- <ul id="users">
+        
+    </ul> -->
+    <table>
+        <thead>
+            <tr>
+                <th width="100px">日期</th>
+                <th width="100px">標題</th>
+                <th width="200px">內容</th>
+            </tr>
+        </thead>
+        <tbody id="users">
+
+        </tbody>
+    </table>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js' integrity='sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==' crossorigin='anonymous'></script>
+    <script>
+        $(function(){
+            $("#test > input[name=btncreate]").on('click',function(){
+                $("#create").toggle();
+            })
+
+            $("#test > input[name=btnupdate]").on('click',function(){
+                $("#update").toggle();
+            })
+
+            $("#test > input[name=btndelete]").on('click',function(){
+                $("#delete").toggle();
+            })
+            $.ajax({
+                url:'http://localhost/test2/read.php',
+                type:"GET",
+                dataType:'json',
+                data:{}
+            }).done(function(res){
+                console.log(res)
+                $('#users').empty()
+                res.forEach(function(comments) {
+                    $('#users').append('<tr><td>' + comments.date + "</td><td>" + comments.title + '</td><td>' + comments.message + '</tr>')
+                })
+            }).fail(function(err){
+                console.log(err)
+            })
+
+            $('#create > a').on('click',function(){
+                let date = $('#create > input[name=date]').val()
+                let title = $('#create > input[name=title]').val()
+                let content = $('#create > textarea[name=content]').val()
+                var settings = {
+                    "url": "http://localhost/test2/create.php",
+                    "method": "POST",
+                    "timeout": 0,
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "data": JSON.stringify({
+                        "date": date,
+                        "title":title,
+                        "content":content
+                    }),
+                };
+
+                $.ajax(settings).done(function (response) {
+                console.log(response);
+                });
+            })
+
+            $('#delete > a').on('click',function(){
+                let id = $('#delete > input').val()
+                var settings = {
+                    "url": "http://localhost/test2/delete.php",
+                    "method": "DELETE",
+                    "timeout": 0,
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "data": JSON.stringify({
+                        "id": id
+                    }),
+                };
+
+                $.ajax(settings).done(function (response) {
+                console.log(response);
+                });
+            })
+
+            $('#update > a').on('click',function(){
+                let id = $('#update > input[name=id]').val()
+                let title = $('#update > input[name=title]').val()
+                let content = $('#update > textarea[name=content]').val()
+                var settings = {
+                    "url": "http://localhost/test2/update.php",
+                    "method": "PUT",
+                    "timeout": 0,
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "data": JSON.stringify({
+                        "id": id,
+                        "title": title,
+                        "content": content
+                    }),
+                };
+
+                $.ajax(settings).done(function (response) {
+                    console.log(response);
+                });
+            })
+        });
+    </script>
+    
+</body>
+</html>
