@@ -21,7 +21,7 @@ Api Url:/read.php
 Api呼叫方式:GET
 
 ![image](https://github.com/erroreo/php-billboard/blob/master/2.jpg)
-)
+
 | 表頭1 | 表頭2 | 表頭3 |
 |-------|:-----:|------:|
 | 左1   |  中1  |   右1 |
