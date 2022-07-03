@@ -37,7 +37,7 @@ Api呼叫方式:POST
 
 | Body參數 | 格式 | 說明 | 必填 |
 |-------|:-----:|------:|------:|
-| date | date | 日期 | Required |
+| date | string | 日期 | Required |
 | title | string | 標題 | Required |
 | content | string | 內容 | Required |
 
@@ -50,3 +50,15 @@ Api呼叫方式:DELETE
 | Body參數 | 格式 | 說明 | 必填 |
 |-------|:-----:|------:|------:|
 | id | int | id | Required |
+
+修改資料
+
+Api Url:/update.php
+
+Api呼叫方式:PUT
+
+| Body參數 | 格式 | 說明 | 必填 |
+|-------|:-----:|------:|------:|
+| id | int | id | Required |
+| title | string | 標題 | Required |
+| content | string | 內容 | Required |
