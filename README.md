@@ -16,6 +16,7 @@
 後端
 
 取得資料
+
 Api Url:/read.php
 
 Api呼叫方式:GET
@@ -27,3 +28,15 @@ Api呼叫方式:GET
 | 左1   |  中1  |   右1 |
 | 左2   |  中2  |   右2 |
 | 左3   |  中3  |   右3 |
+
+新增資料
+
+Api Url:/create.php
+
+Api呼叫方式:POST
+
+| Body參數 | 格式 | 說明 |
+|-------|:-----:|------:|
+| date   |  date  |   日期 |
+| title   |  string  |   標題 |
+| content   |  string  |   內容 |
